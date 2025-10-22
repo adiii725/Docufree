@@ -1,6 +1,5 @@
 {
-  "version": 2,
-  "projects": [],
+  "version": 3,
   "builds": [
     {
       "src": "frontend/package.json",
@@ -15,5 +14,8 @@
   "routes": [
     { "src": "/api/(.*)", "dest": "/backend/server.js" },
     { "src": "/(.*)", "dest": "/frontend/$1" }
-  ]
+  ],
+  "env": {
+    "MONGO_URI": "@mongo-uri"
+  }
 }
