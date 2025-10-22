@@ -1,0 +1,8 @@
+{
+  "title": "22",
+  "filename": "22_1761070226767.txt",
+  "wordCount": 31,
+  "date": "2025-10-21T18:10:26.767Z",
+  "snippet": "at its core, life is a journey filled with moments of joy, sorrow, and everything in between. while relationships provide solace and companionship, they can also bring about conflict and heartache.",
+  "content": "at its core, life is a journey filled with moments of joy, sorrow, and everything in between. while relationships provide solace and companionship, they can also bring about conflict and heartache."
+}

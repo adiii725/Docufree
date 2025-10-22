@@ -1,0 +1,8 @@
+{
+  "title": "coal",
+  "filename": "coal_1761127482666.txt",
+  "wordCount": 20,
+  "date": "2025-10-22T10:04:42.666Z",
+  "snippet": "coal is a valuable hard, black material extracted from mines. wood that has been buried for a long time becomes",
+  "content": "coal is a valuable hard, black material extracted from mines. wood that has been buried for a long time becomes"
+}

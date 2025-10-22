@@ -1,0 +1,50 @@
+C:\Users\Aditya Kawale>cd C:\Users\Aditya Kawale\OneDrive\Desktop
+C:\Users\Aditya Kawale\OneDrive\Desktop>javac Operations.java
+C:\Users\Aditya Kawale\OneDrive\Desktop>java Operations.java
+Enter the two numbers to perform operations
+
+Enter the first number : 22
+
+Enter the second number : 33
+
+Choose the operation you want to perform
+
+Choose 1 for ADDITION
+
+Choose 2 for SUBTRACTION
+
+Choose 3 for MULTIPLICATION
+
+Choose 4 for DIVISION
+
+Choose 5 for MODULUS
+
+Choose 6 for EXIT
+
+1
+
+Result : 55
+
+Enter the two numbers to perform operations
+
+Enter the first number : 22
+
+Enter the second number : 33
+
+Choose the operation you want to perform
+
+Choose 1 for ADDITION
+
+Choose 2 for SUBTRACTION
+
+Choose 3 for MULTIPLICATION
+
+Choose 4 for DIVISION
+
+Choose 5 for MODULUS
+
+Choose 6 for EXIT
+
+2
+
+Result : -11

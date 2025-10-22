@@ -1,0 +1,34 @@
+# Node dependencies
+node_modules/
+**/node_modules/
+
+# Build outputs
+dist/
+build/
+
+# Environment variables
+.env
+
+# Logs and temp
+*.log
+*.tmp
+*.cache
+
+# Transformers or model cache
+*.onnx
+*.bin
+*.pt
+.cache/
+**/.cache/
+transformers_cache/
+models/
+downloads/
+
+# OS / Editor stuff
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Backup folders
+**/Docufree-backup/

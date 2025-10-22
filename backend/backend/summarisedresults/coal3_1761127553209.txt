@@ -1,0 +1,8 @@
+{
+  "title": "coal3",
+  "filename": "coal3_1761127553209.txt",
+  "wordCount": 38,
+  "date": "2025-10-22T10:05:53.209Z",
+  "snippet": "coal is a valuable hard, black material extracted from mines. wood that has been buried for a long time becomes coal due to a chemical change. coal is used as a fuel in homes and factories and industr",
+  "content": "coal is a valuable hard, black material extracted from mines. wood that has been buried for a long time becomes coal due to a chemical change. coal is used as a fuel in homes and factories and industries."
+}

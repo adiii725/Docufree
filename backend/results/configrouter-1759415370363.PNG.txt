@@ -1,0 +1,37 @@
+Router>en
+Routerscontig term
+
+Znter configuration commands, one per line. Ind with CNTL/Z.
+
+Router (config) senable password admin
+
+Router (config) fine £a0/0
+
+Router (config-if) #ip address 10.0.0.10 255.0.0.0
+
+Router (config-if) no shut
+
+Router (config-if)s
+
+SLINK-S-CHANGED: Interface Fastithernes0/0, changed state to up
+SLINEPROTO-S-UPDOWN: Line protocol on Interface Fascithernes0/0, changed state to
+up
+
+$10-4-DUPADDR: Duplicate address 10.0.0.10 on FascEchernes0/0, sourced by
+00D0. BAR: .CEET
+
+ine VLANL
+
+Router (config-if) no shusdown
+
+Router (config-if)s
+
+SLINK-5-CHANGED: Interface Vianl, changed state to up
+
+Line vey 0 15
+
+Router (config-line) spassword cisco
+
+Router (config-line) tlogin
+
+Router (config-line) f|
