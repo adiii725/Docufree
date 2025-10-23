@@ -1,4 +1,8 @@
 // ==================== COMPLETE server.js WITH ALL CHANGES ====================
+// Vercel serverless compatibility
+const IS_VERCEL = process.env.VERCEL === '1';
+
+// Use /tmp directory for Vercel
 
 import express from "express";
 import dotenv from "dotenv";
@@ -25,9 +29,9 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // -------------------- Directories Setup --------------------
-const UPLOAD_DIR = path.join(process.cwd(), "uploads");
-const RESULTS_DIR = path.join(process.cwd(), "results");
-const SUMMARIES_DIR = path.join(process.cwd(), "backend", "summarisedresults");
+const UPLOAD_DIR = IS_VERCEL ? '/tmp/uploads' : path.join(process.cwd(), "uploads");
+const RESULTS_DIR = IS_VERCEL ? '/tmp/results' : path.join(process.cwd(), "results");
+const SUMMARIES_DIR = IS_VERCEL ? '/tmp/summaries' : path.join(process.cwd(), "backend", "summarisedresults");
 
 // Create directories if they don't exist
 [UPLOAD_DIR, RESULTS_DIR, SUMMARIES_DIR].forEach(dir => {

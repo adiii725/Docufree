@@ -1,6 +1,7 @@
 {
       "name": "Landing Page Design",
       "version": "0.1.0",
+       "type": "module",
       "private": true,
       "dependencies": {
             "@radix-ui/react-accordion": "^1.2.3",
@@ -60,7 +61,8 @@
             "vite": "6.3.5"
       },
       "scripts": {
-            "dev": "vite",
-            "build": "vite build"
-      }
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  }
 }

@@ -19,11 +19,40 @@
       "dest": "/backend/server.js"
     },
     {
-      "src": "/(.*)",
+      "src": "/ocr/(.*)",
+      "dest": "/backend/server.js"
+    },
+    {
+      "src": "/upload(.*)",
+      "dest": "/backend/server.js"
+    },
+    {
+      "src": "/uploads/(.*)",
+      "dest": "/backend/server.js"
+    },
+    {
+      "src": "/results/(.*)",
+      "dest": "/backend/server.js"
+    },
+    {
+      "src": "/summaries/(.*)",
+      "dest": "/backend/server.js"
+    },
+    {
+      "src": "/health",
+      "dest": "/backend/server.js"
+    },
+    {
+      "src": "/(.*\\.(js|css|png|jpg|jpeg|gif|svg|ico|json|woff|woff2|ttf|eot))",
       "dest": "/frontend/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/frontend/index.html"
     }
   ],
   "env": {
-    "MONGO_URI": "@mongo_uri"
+    "MONGO_URI": "@mongo_uri",
+    "NODE_ENV": "production"
   }
 }
