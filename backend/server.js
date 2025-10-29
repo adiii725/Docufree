@@ -138,7 +138,24 @@ const upload = multer({
 });
 
 // -------------------- Middleware --------------------
-app.use(cors({ origin: true, credentials: true }));
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://docufree-frontend-qlq5810k7-aditya-bharat-kawales-projects.vercel.app"
+];
+
+app.use(cors({
+  origin: function(origin, callback) {
+    // allow requests with no origin (like curl or mobile apps)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) === -1) {
+      const msg = `The CORS policy for this site does not allow access from the specified Origin.`;
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  },
+  credentials: true,
+}));
+
 app.use(express.json());
 app.use(express.text({ limit: "10mb" })); // For PUT requests to results
 
