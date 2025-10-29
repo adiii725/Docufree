@@ -34,8 +34,12 @@ const LANGS = [
   { code: 'pt', label: 'Portuguese (Português)' },
   { code: 'ru', label: 'Russian (Русский)' },
 ];
+const API_BASE_URL =
+  import.meta.env.VITE_API_URL ||
+  (window.location.hostname === "localhost"
+    ? "http://localhost:5000"
+    : "https://docufree.onrender.com");
 
-const API_BASE_URL = "http://localhost:5000";
 
 const TranslationPage: React.FC = () => {
   const navigate = useNavigate();

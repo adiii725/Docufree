@@ -5,6 +5,11 @@ import { ArrowLeft, Copy, FileDown, Trash2, X, Save } from "lucide-react";
 import axios from "axios";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+const API_BASE_URL =
+  import.meta.env.VITE_API_URL ||
+  (window.location.hostname === "localhost"
+    ? "http://localhost:5000"
+    : "https://docufree.onrender.com");
 
 type OcrResult = {
   id: string;
@@ -34,7 +39,8 @@ export default function OcrResultsPage() {
     try {
       setLoading(true);
       setError(null);
-      const indexRes = await axios.get("http://localhost:5000/uploads/index.json");
+     const indexRes = await axios.get(`${API_BASE_URL}/uploads/index.json`);
+
       const files = indexRes.data;
 
       if (!Array.isArray(files)) return setOcrResults([]);
@@ -45,9 +51,9 @@ export default function OcrResultsPage() {
         const originalName = typeof file === "object" ? file.originalName : filename;
 
         try {
-          const resultRes = await axios.get(
-            `http://localhost:5000/results/${encodeURIComponent(filename)}.txt`
-          );
+          const resultRes =
+         await axios.get(`${API_BASE_URL}/results/${encodeURIComponent(filename)}.txt`);
+
           if (resultRes.data) {
             const text = resultRes.data;
             const wordCount = text.split(/\s+/).filter(Boolean).length;
@@ -107,14 +113,23 @@ export default function OcrResultsPage() {
     
     console.log("Attempting to delete files...");
     try {
-      // Delete the result file
-      console.log("Deleting result file:", `http://localhost:5000/results/${encodeURIComponent(result.id)}.txt`);
-      await axios.delete(`http://localhost:5000/results/${encodeURIComponent(result.id)}.txt`);
-      
-      // Delete the upload file
-      console.log("Deleting upload file:", `http://localhost:5000/uploads/${encodeURIComponent(result.id)}`);
-      await axios.delete(`http://localhost:5000/uploads/${encodeURIComponent(result.id)}`);
-      
+      console.log(
+  "Deleting result file:",
+  `${API_BASE_URL}/results/${encodeURIComponent(result.id)}.txt`
+);
+await axios.delete(
+  `${API_BASE_URL}/results/${encodeURIComponent(result.id)}.txt`
+);
+
+// Delete the upload file
+console.log(
+  "Deleting upload file:",
+  `${API_BASE_URL}/uploads/${encodeURIComponent(result.id)}`
+);
+await axios.delete(
+  `${API_BASE_URL}/uploads/${encodeURIComponent(result.id)}`
+);
+
       setOcrResults((prev) => prev.filter((r) => r.id !== result.id));
       toast({ title: "Success", description: "File deleted successfully" });
       console.log("Delete successful");
@@ -140,8 +155,9 @@ export default function OcrResultsPage() {
     try {
       // Send the updated text to the backend to update the existing file
       await axios.put(
-        `http://localhost:5000/results/${encodeURIComponent(selectedResult.id)}.txt`,
-        { text: editedText },
+  `${API_BASE_URL}/results/${encodeURIComponent(selectedResult.id)}.txt`,
+  { text: editedText },
+
         {
           headers: {
             'Content-Type': 'application/json',

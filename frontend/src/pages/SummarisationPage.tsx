@@ -11,7 +11,13 @@ export default function SummarisationPage() {
   const [savedList, setSavedList] = useState<any[]>([]);
   const [preview, setPreview] = useState<{ id: string; text: string; title: string } | null>(null);
   const [error, setError] = useState("");
-  const API_BASE_URL = "http://localhost:5000";
+const API_BASE_URL =
+  import.meta.env.VITE_API_URL ||
+  (window.location.hostname === "localhost"
+    ? "http://localhost:5000"
+    : "https://https://docufree.onrender.com");
+
+
 
   useEffect(() => {
     if (showSaved) fetchSummaries();

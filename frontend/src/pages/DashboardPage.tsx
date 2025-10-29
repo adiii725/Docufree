@@ -6,6 +6,13 @@ import { UploadModal } from "../components/UploadModal";
 import { DocumentDetailsPanel } from "../components/DocumentDetailsPanel";
 import { FileText, MessageSquare, Languages, ScanText, LogOut, Sparkles, Loader2, X } from "lucide-react";
 import axios from "axios";
+// ✅ Auto switch between localhost & vercel
+const API_BASE_URL =
+  import.meta.env.VITE_API_URL ||
+  (window.location.hostname === "localhost"
+    ? "http://localhost:5000"
+    : "https://docufree.onrender.com");
+
 
 type IndexItemObject = {
   filename: string;
@@ -154,7 +161,8 @@ export default function DashboardPage() {
   const [ocrLoading, setOcrLoading] = useState<string | null>(null);
 
   const normalizeFromFilename = (filename: string): Doc => {
-    const url = `http://localhost:5000/uploads/${encodeURIComponent(filename)}`;
+    const url = `${API_BASE_URL}/uploads/${encodeURIComponent(filename)}`;
+
     const fileType = (filename.split(".").pop() || "").toLowerCase();
     return {
       id: filename,
@@ -169,7 +177,8 @@ export default function DashboardPage() {
 
   const normalizeFromObject = (it: IndexItemObject): Doc => {
     const filename = it.filename;
-    const url = `http://localhost:5000/uploads/${encodeURIComponent(filename)}`;
+    const url = `${API_BASE_URL}/uploads/${encodeURIComponent(filename)}`;
+
     const fileType = it.mime
       ? it.mime.split("/").pop()
       : filename.split(".").pop() || "";
@@ -189,9 +198,8 @@ export default function DashboardPage() {
 
   const fetchExisting = async () => {
     try {
-      const res = await axios.get<any>("http://localhost:5000/uploads/index.json", {
-        timeout: 5000
-      });
+     const res = await axios.get(`${API_BASE_URL}/uploads/index.json`);
+
       const data = res.data;
 
       if (!Array.isArray(data)) {
@@ -229,7 +237,8 @@ export default function DashboardPage() {
     if (!confirmDelete) return;
 
     try {
-      await axios.delete(`http://localhost:5000/upload/${encodeURIComponent(doc.id)}`);
+      await axios.delete(`${API_BASE_URL}/upload/${encodeURIComponent(doc.id)}`);
+
       console.log(`Deleted: ${doc.name}`);
     } catch (err) {
       console.error("Delete failed:", err);
@@ -262,15 +271,9 @@ export default function DashboardPage() {
       console.log(`Starting OCR for: ${doc.name}`);
 
       const res = await axios.post(
-        `http://localhost:5000/ocr/run/${encodeURIComponent(doc.id)}`,
-        {},
-        { 
-          timeout: 120000,
-          onUploadProgress: (progressEvent) => {
-            console.log("OCR in progress...");
-          }
-        }
-      );
+  `${API_BASE_URL}/ocr/run/${encodeURIComponent(doc.id)}`
+);
+
 
       if (res.data.ok) {
         const resultText = res.data.text || "";
